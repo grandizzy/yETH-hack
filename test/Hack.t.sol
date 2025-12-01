@@ -9,7 +9,7 @@ import {IOETH} from "./interfaces/IOETH.sol";
 import "forge-std/Test.sol";
 
 // ---- Usage ----
-// `forge t --mt test_Attack -vv`
+// `forge t --mt test_attack -vv`
 
 contract HackTests is Test {
 
@@ -83,7 +83,7 @@ contract HackTests is Test {
         assertEq(localCode, newDeployedCode);
     }
 
-    function test_Attack() public {
+    function test_attack() public {
         address bad_tapir = address(69);
         vm.startPrank(bad_tapir);
 

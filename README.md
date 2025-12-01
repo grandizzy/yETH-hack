@@ -1,5 +1,13 @@
 # yETH-hack
 
+A proof of concept demonstrating an attack that occurred on yETH.
+
+## The Vulnerability
+
+The attack exploited unsafe math operations in [Pool.vy:1274](src/Pool.vy#L1274). The original code used `unsafe_div`, `unsafe_sub`, and `unsafe_mul` which bypass Vyper's built-in overflow/underflow checks.
+
+**Fix**: Using safe math (standard arithmetic operators) instead of unsafe math causes the attack to revert. See the commented code in `src/Pool.vy` at line 1272-1276 and `test_attack` in `test/Hack.t.sol`.
+
 ## Installation
 
 1. **Clone the repository**

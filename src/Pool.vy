@@ -1269,7 +1269,12 @@ def _calc_supply(
 
     for _ in range(255):
         assert s > 0
+        # --------
+        # NOTE: Using safe math on the line below causes `test_attack` to revert.
         sp: uint256 = unsafe_div(unsafe_sub(l, unsafe_mul(s, r)), d) # D[m+1] = (l - s * r) / d
+        # sp: uint256 = (l - s * r) / d # D[m+1] = (l - s * r) / d
+        # --------
+
         # update product term pi[m+1] = (D[m+1]/D[m])^n pi[m]
         for i in range(MAX_NUM_ASSETS):
             if i == _num_assets:
